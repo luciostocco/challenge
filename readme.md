@@ -1,5 +1,5 @@
 
-## Python challenge 1
+## Python Technical challenge
 
 
 ## Getting Started
