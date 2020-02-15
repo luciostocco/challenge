@@ -60,7 +60,7 @@ class ChallengeOne(ChallengeBase):
 
             return mktime_tz(parsedate_1) - mktime_tz(parsedate_2)
         except Exception as e:
-            raise Exception(f'Invalid timestamp')
+            raise Exception('Invalid timestamp')
 
     def analise_samples(self, sample_filename: str) -> list:
         """
