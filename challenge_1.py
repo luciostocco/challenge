@@ -1,10 +1,20 @@
 from email.utils import parsedate_tz, mktime_tz
-from typing import Tuple
+
+
+class InputData:
+    # Class that represent Input Data
+
+    def __init__(self, data: list, number_test_cases: int):
+        self.data = data
+        self.number_test_cases = number_test_cases
+
+    def __repr__(self):
+        return self.__class__.__name__
 
 
 class ChallengeBase:
 
-    def get_input_data(self, sample_filename: str) -> Tuple[int, list]:
+    def get_input_data(self, sample_filename: str) -> InputData:
         """
         Return sample input input_data from file
         :param sample_filename: Sample filename path
@@ -24,7 +34,10 @@ class ChallengeBase:
         # delete first line from the input input_data
         del input_data[0]
 
-        return number_test_cases, input_data
+        return InputData(
+            input_data,
+            number_test_cases,
+        )
 
 
 class ChallengeOne(ChallengeBase):
@@ -55,17 +68,17 @@ class ChallengeOne(ChallengeBase):
         :param sample_filename: Sample filename path
         :return: List of results
         """
-        number_test_cases, input = self.get_input_data(sample_filename)
+        input = self.get_input_data(sample_filename)
 
         # Iterate through the input input lines, getting pars of lines
         # for <number_test_cases> times and calculate the timestamp_absolute_difference
         results = []
         try:
-            for item in range(0, (number_test_cases * 2) - 1, 2):
+            for item in range(0, (input.number_test_cases * 2) - 1, 2):
                 results.append(
                     self.timestamp_absolute_difference(
-                        timestamp_1=input[item],
-                        timestamp_2=input[item + 1]
+                        timestamp_1=input.data[item],
+                        timestamp_2=input.data[item + 1]
                     )
                 )
         except IndexError:

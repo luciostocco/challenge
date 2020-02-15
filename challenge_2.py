@@ -23,15 +23,15 @@ class ChallengeTwo(ChallengeBase):
         :param sample_filename: Sample file name
         :return: list of valid emails
         """
-        number_test_cases, input_data = self.get_input_data(sample_filename)
+        input = self.get_input_data(sample_filename)
 
-        number_test_cases = number_test_cases if len(input_data) > number_test_cases else len(input_data)
+        number_test_cases = input.number_test_cases if len(input.data) > input.number_test_cases else len(input.data)
 
         results = []
         try:
             for item in range(0, number_test_cases):
-                if self.is_valid_email(input_data[item]):
-                    results.append(input_data[item])
+                if self.is_valid_email(input.data[item]):
+                    results.append(input.data[item])
         except IndexError:
             raise Exception('The number of samples (line 1) does not match '
                             'the amount of emails in the input file')

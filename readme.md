@@ -30,21 +30,28 @@ $ cd challenge
 $ pip install -r requirements.txt
 ```
 
-4. See the Challenge results. Run the tests (It is important to use the -s option so that you can see the prints of the results)
+4. See the Challenge results. If you want to test with different input data just update challenge_1_input.txt and challenge_2_input.txt
 
 ```sh
-$ pytest test -s
+$ python app.py
+```
+
+5. Run Unit Tests
+
+```sh
+$ pytest test
 ```
 
 ### Additional information
 
 * The requirement do not have clear information about the input. To facilitate the tests I decided to create a text files test_challenge_1.txt and test_challenge_2.txt, in which the input data was inserted exactly the same way as it is in the requirements.
-
-* To see the script result, just run the unit tests. To do this, enter in the script directory and execute the command line: pytest test -s
-
+* See the Challenge results. If you want to test with different input data just update challenge_1_input.txt and challenge_2_input.txt
 * To make it more testable I decided not to print the result inside the ChallengeOne class. The challenge.analise_samples () method only returns a list of results. In the unit tests I print the result, as requested.
-
+* Also to facilitate mock the input file Unit in the ChallengeBase tests.get_input_data () returns an object
+* Foi criado ChallengeBase que contem get_input_data() method. Os dois Challanges herdam ChallengeBase. 
 * Only the number of test cases contained in the first line of the input will be tested. If there are more data in the file, it will be ignored.
 
+### Additional information
 
+* Unit tests are not covering 100% of the code. In a real situation it would be necessary to create specific unit tests for each method and for each Constraits and validations.
 
